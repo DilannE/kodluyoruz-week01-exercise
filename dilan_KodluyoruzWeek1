@@ -1,0 +1,58 @@
+by dergin
+*************************************************************************
+1.
+val numbers = List(99,321,12,5,57,28,66,47,8)
+
+def minBul (numbers : List[Int]): Int ={
+  var min = numbers.head
+  var i = 0
+  for(i <- numbers){
+    if(i < min) min = i
+  }
+  return min
+}
+def maxBul (numbers : List[Int]): Int ={
+  var max = numbers.head
+  var i = 0
+  for(i <- numbers){
+    if(i > max) max = i
+  }
+  return max
+}
+
+def minMaxFark (min : Int , max : Int ):Int ={
+  return max - min
+}
+
+minBul(numbers)
+maxBul(numbers)
+minMaxFark(minBul(numbers) ,maxBul(numbers) )
+
+*************************************************************************
+2.
+val numbers = List(5,77,84,4,2,36,458,74,98,65)
+val maxNumber = (x: Int , y : Int) => x max y 
+numbers.reduceLeft(maxNumber)
+val minNumber = (x: Int , y : Int) => x min y
+numbers.reduceLeft(minNumber)
+
+*************************************************************************
+3.
+val numbers = List(5,77,84,4,2,36,458,74,98,65)
+
+def findMax(list: List[Int], currentMax: Int = Int.MinValue): Int = {
+  if(list.isEmpty) currentMax
+  else if ( list.head > currentMax) findMax(list.tail, list.head)
+  else findMax(list.tail,currentMax)
+}
+def findMin(list: List[Int], currentMax: Int = Int.MaxValue): Int = {
+  if(list.isEmpty) currentMax
+  else if ( list.head < currentMax) findMin(list.tail, list.head)
+  else findMin(list.tail,currentMax)
+}
+def subTract_maxMin(max :Int , min : Int) : Int={
+  return max - min 
+}
+findMax(numbers)
+findMin(numbers)
+subTract_maxMin(findMax(numbers),findMin(numbers))
